@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         PlayerMovement.cs
+// Author :            Jacob Welch
+// Creation Date :     28 August 2021
+//
+// Brief Description : Handles the movement of the player.
+*****************************************************************************/
 using Cinemachine;
 using UnityEngine;
 

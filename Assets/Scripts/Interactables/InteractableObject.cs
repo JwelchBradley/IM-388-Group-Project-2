@@ -3,25 +3,42 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Outline))]
+[RequireComponent(typeof(MeshCollider))]
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     private TextMeshProUGUI displayName;
-    private string objectName = "Cube";
+
     private Rigidbody rb;
     private Outline outline;
+
+    [SerializeField]
     private float outlineWidth = 10;
     private float objectMoveSpeed = 12;
+
+
+#if UNITY_EDITOR
+    private void Reset()
+    {
+        GetComponent<MeshCollider>().convex = true;
+        Outline outline = GetComponent<Outline>();
+        outline.OutlineWidth = 0;
+        outline.OutlineColor = Color.yellow;
+    }
+#endif
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         outline = GetComponent<Outline>();
+
         displayName = GameObject.Find("Display Name").GetComponent<TextMeshProUGUI>();
     }
 
     public void DisplayObjectName()
     {
-        displayName.text = objectName;
+        displayName.text = gameObject.name;
     }
 
     public void RemoveObjectName()

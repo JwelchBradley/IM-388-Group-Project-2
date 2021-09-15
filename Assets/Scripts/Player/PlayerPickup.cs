@@ -102,16 +102,19 @@ public class PlayerPickup : MonoBehaviour
     /// <param name="interactable"></param>
     private void HandleInteractableHover(IInteractable interactable)
     {
-        hoveredItem = interactable;
+        if(hoveredItem != interactable)
+        {
+            interactable.HighlightObject();
+            interactable.DisplayObjectName();
+
+            hoveredItem = interactable;
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             interactable.Pickup(pickUpDest);
             heldItem = interactable;
         }
-
-        interactable.HighlightObject();
-        interactable.DisplayObjectName();
     }
     #endregion
 }
