@@ -104,6 +104,8 @@ public class PlayerPickup : MonoBehaviour
     {
         if(hoveredItem != interactable)
         {
+            ResetHoverItem();
+
             interactable.HighlightObject();
             interactable.DisplayObjectName();
 

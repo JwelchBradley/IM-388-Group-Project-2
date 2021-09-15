@@ -1,5 +1,11 @@
+/*****************************************************************************
+// File Name :         InteractalbeObject.cs
+// Author :            Jacob Welch
+// Creation Date :     28 August 2021
+//
+// Brief Description : Allows the player to 
+*****************************************************************************/
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,17 +14,37 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class InteractableObject : MonoBehaviour, IInteractable
 {
+    /// <summary>
+    /// The TextMeshProUGUI component in the scene the renders the objects name.
+    /// </summary>
     private TextMeshProUGUI displayName;
 
+    /// <summary>
+    /// The rigidbody of this object.
+    /// </summary>
     private Rigidbody rb;
+
+    /// <summary>
+    /// The outline component of this object.
+    /// </summary>
     private Outline outline;
 
+    [Header("Pickup")]
     [SerializeField]
+    [Tooltip("The width of the outline when it is hovered over")]
+    [Range(5, 30)]
     private float outlineWidth = 10;
+
+    [SerializeField]
+    [Tooltip("How fast the object is pulled to the player")]
+    [Range(5, 30)]
     private float objectMoveSpeed = 12;
 
 
 #if UNITY_EDITOR
+    /// <summary>
+    /// Initializes the components in the editor.
+    /// </summary>
     private void Reset()
     {
         GetComponent<MeshCollider>().convex = true;
@@ -28,6 +54,9 @@ public class InteractableObject : MonoBehaviour, IInteractable
     }
 #endif
 
+    /// <summary>
+    /// Initializes components needed by this object.
+    /// </summary>
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,16 +65,25 @@ public class InteractableObject : MonoBehaviour, IInteractable
         displayName = GameObject.Find("Display Name").GetComponent<TextMeshProUGUI>();
     }
 
+    /// <summary>
+    /// Displays the objects name.
+    /// </summary>
     public void DisplayObjectName()
     {
         displayName.text = gameObject.name;
     }
 
+    /// <summary>
+    /// Removes the objects name.
+    /// </summary>
     public void RemoveObjectName()
     {
         displayName.text = "";
     }
 
+    /// <summary>
+    /// Highlights the object.
+    /// </summary>
     public void HighlightObject()
     {
         outline.OutlineWidth = outlineWidth;
