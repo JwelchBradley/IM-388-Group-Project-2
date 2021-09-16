@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = Mathf.Sqrt(currentJumpHeight * -2f * gravity);
         }
     }
 
