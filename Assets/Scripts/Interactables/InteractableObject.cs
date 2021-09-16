@@ -37,11 +37,6 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
     [Header("Pickup")]
     [SerializeField]
-    [Tooltip("The width of the outline when it is hovered over")]
-    [Range(5, 30)]
-    private float outlineWidth = 10;
-
-    [SerializeField]
     [Tooltip("How fast the object is pulled to the player")]
     [Range(5, 30)]
     private float objectMoveSpeed = 20;
@@ -55,13 +50,19 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     private void Reset()
     {
+        // Sets the objects layer to interactable
         gameObject.layer = LayerMask.NameToLayer("Interactable");
 
+        // Initiliazes the meshcollider to be convex
         GetComponent<MeshCollider>().convex = true;
+
+        // Initializes the outline component
         Outline outline = GetComponent<Outline>();
-        outline.OutlineWidth = 0;
+        outline.OutlineWidth = 10;
         outline.OutlineColor = Color.yellow;
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
         outline.PreComputeOutline = true;
+        outline.enabled = false;
     }
 #endif
 
@@ -70,10 +71,12 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     private void Awake()
     {
+        // Gets this objects components
         rb = GetComponent<Rigidbody>();
         outline = GetComponent<Outline>();
         mesh = GetComponent<MeshCollider>();
 
+        // Gets other objects components
         displayName = GameObject.Find("Display Name").GetComponent<TextMeshProUGUI>();
     }
     #endregion
@@ -103,7 +106,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     public void HighlightObject()
     {
-        outline.OutlineWidth = outlineWidth;
+        outline.enabled = true;
     }
 
     /// <summary>
@@ -111,7 +114,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     public void UnHighlightObject()
     {
-        outline.OutlineWidth = 0;
+        outline.enabled = false;
     }
     #endregion
 
