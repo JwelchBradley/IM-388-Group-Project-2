@@ -14,6 +14,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class InteractableObject : MonoBehaviour, IInteractable
 {
+    #region Variables
     /// <summary>
     /// The TextMeshProUGUI component in the scene the renders the objects name.
     /// </summary>
@@ -29,6 +30,11 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     private Outline outline;
 
+    /// <summary>
+    /// The MeshCollider of this object.
+    /// </summary>
+    private MeshCollider mesh;
+
     [Header("Pickup")]
     [SerializeField]
     [Tooltip("The width of the outline when it is hovered over")]
@@ -38,19 +44,24 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [SerializeField]
     [Tooltip("How fast the object is pulled to the player")]
     [Range(5, 30)]
-    private float objectMoveSpeed = 12;
+    private float objectMoveSpeed = 20;
+    #endregion
 
-
+    #region Functions
+    #region Initialize
 #if UNITY_EDITOR
     /// <summary>
     /// Initializes the components in the editor.
     /// </summary>
     private void Reset()
     {
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
+
         GetComponent<MeshCollider>().convex = true;
         Outline outline = GetComponent<Outline>();
         outline.OutlineWidth = 0;
         outline.OutlineColor = Color.yellow;
+        outline.PreComputeOutline = true;
     }
 #endif
 
@@ -61,10 +72,14 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         rb = GetComponent<Rigidbody>();
         outline = GetComponent<Outline>();
+        mesh = GetComponent<MeshCollider>();
 
         displayName = GameObject.Find("Display Name").GetComponent<TextMeshProUGUI>();
     }
+    #endregion
 
+    #region Interactions
+    #region Object Name Display
     /// <summary>
     /// Displays the objects name.
     /// </summary>
@@ -80,7 +95,9 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         displayName.text = "";
     }
+    #endregion
 
+    #region Highlight
     /// <summary>
     /// Highlights the object.
     /// </summary>
@@ -89,30 +106,50 @@ public class InteractableObject : MonoBehaviour, IInteractable
         outline.OutlineWidth = outlineWidth;
     }
 
+    /// <summary>
+    /// Stops the highlight on the object.
+    /// </summary>
     public void UnHighlightObject()
     {
         outline.OutlineWidth = 0;
     }
+    #endregion
 
+    #region Pickup
     public void Pickup(GameObject pickUpDest)
     {
         StartCoroutine(PickupHelper(pickUpDest));
-        /*
-        rb.useGravity = false;
-        transform.position = pickUpDest.transform.position;
-        transform.parent = pickUpDest.transform;*/
     }
 
     private IEnumerator PickupHelper(GameObject pickUpDest)
     {
         rb.useGravity = false;
+
+        bool canGrab = true;
+
         while (true)
         {
-            Vector3 dir = pickUpDest.transform.position - rb.position;
-            float currentMoveSpeed = Mathf.Lerp(0, objectMoveSpeed, Vector3.Distance(rb.position, pickUpDest.transform.position));
-            dir = dir.normalized * currentMoveSpeed;
-            rb.velocity = dir;
-            //rb.position = Vector3.MoveTowards(rb.position, pickUpDest.transform.position, objectMoveSpeed * Time.deltaTime);
+            foreach(Collider col in PlayerMovement.playerIsOn)
+            {
+                if (mesh.Equals(col))
+                {
+                    canGrab = false;
+                    break;
+                }
+                else
+                {
+                    canGrab = true;
+                }
+            }
+
+            if(canGrab)
+            {
+                Vector3 dir = pickUpDest.transform.position - rb.position;
+                float currentMoveSpeed = Mathf.Lerp(0, objectMoveSpeed, Vector3.Distance(rb.position, pickUpDest.transform.position));
+                dir = dir.normalized * currentMoveSpeed;
+                rb.velocity = dir;
+            }
+
             yield return new WaitForEndOfFrame();
         }
     }
@@ -123,9 +160,14 @@ public class InteractableObject : MonoBehaviour, IInteractable
         transform.parent = null;
         StopAllCoroutines();
     }
+    #endregion
 
+    #region Equip
     public void Equip()
     {
         throw new System.NotImplementedException();
     }
+    #endregion
+    #endregion
+    #endregion
 }

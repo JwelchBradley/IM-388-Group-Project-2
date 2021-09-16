@@ -54,6 +54,16 @@ public class PlayerMovement : MonoBehaviour
     private float jumpHeight = 3;
 
     [SerializeField]
+    [Tooltip("How much velocity the player has when jumping")]
+    [Range(0, 5)]
+    private float crouchJumpHeight = 3;
+
+    /// <summary>
+    /// The height the player currently jumps to.
+    /// </summary>
+    private float currentJumpHeight = 3;
+
+    [SerializeField]
     [Tooltip("The rate at which gravity scales")]
     [Range(-20, 0)]
     private float gravity = -9.8f;
@@ -76,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
     /// Holds true if the player is on the ground.
     /// </summary>
     private bool isGrounded = false;
+
+    public static Collider[] playerIsOn;
     #endregion
 
     #region Cameras
@@ -113,6 +125,9 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        currentSpeed = walkSpeed;
+        currentJumpHeight = jumpHeight;
+
         controller = GetComponent<CharacterController>();
 
         GetCameras();
@@ -157,13 +172,13 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void Crouch()
     {
-        if(crouchCam.m_Priority != 2 && isGrounded)
+        if(crouchCam.m_Priority != 2)
         {
-            CrouchHelper(2, ref crouchCamPOV, ref walkCamPOV, crouchWalkSpeed);     // Crouches
+            CrouchHelper(2, ref crouchCamPOV, ref walkCamPOV, crouchWalkSpeed, crouchJumpHeight);     // Crouches
         }
         else
         {
-            CrouchHelper(0, ref walkCamPOV, ref crouchCamPOV, walkSpeed);           // Uncrouches
+            CrouchHelper(0, ref walkCamPOV, ref crouchCamPOV, walkSpeed, jumpHeight);           // Uncrouches
         }
     }
 
@@ -174,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="setTo">The cam that is having its value changed.</param>
     /// <param name="setFrom">The cam that is passing along its values.</param>
     /// <param name="speed">The new speed of the player.</param>
-    private void CrouchHelper(int camPriority, ref CinemachinePOV setTo, ref CinemachinePOV setFrom, float speed)
+    private void CrouchHelper(int camPriority, ref CinemachinePOV setTo, ref CinemachinePOV setFrom, float speed, float jumpHeight)
     {
         // Keeps same look angle of the camera
         setTo.m_VerticalAxis.Value = setFrom.m_VerticalAxis.Value;
@@ -199,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
         GravityCalculation();
 
         IsGrounded();
+
+        IsOnObject();
     }
 
     /// <summary>
@@ -209,6 +226,11 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheckPos.transform.position, groundCheckDist, groundMask);
     }
 
+    private void IsOnObject()
+    {
+        playerIsOn = Physics.OverlapSphere(groundCheckPos.transform.position, 1, groundMask);
+    }
+
     /// <summary>
     /// Moves the player.
     /// </summary>
@@ -216,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 currentMove = cameraTransform.right * move.x + cameraTransform.forward * move.z;
         currentMove.y = 0f;
+        currentMove.Normalize();
 
         controller.Move(currentMove * currentSpeed * Time.deltaTime);
     }
