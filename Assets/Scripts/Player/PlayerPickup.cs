@@ -15,6 +15,7 @@ public class PlayerPickup : MonoBehaviour
     [Tooltip("The position that the object will be picked up to")]
     private GameObject pickUpDest;
 
+    #region Item References
     /// <summary>
     /// The interactable script of a held item.
     /// </summary>
@@ -24,6 +25,12 @@ public class PlayerPickup : MonoBehaviour
     /// The interactable script of a hovered item.
     /// </summary>
     private IInteractable hoveredItem = null;
+
+    /// <summary>
+    /// The interactalbe script of the equiped item.
+    /// </summary>
+    private IInteractable equipedItem = null;
+    #endregion
 
     /// <summary>
     /// The main camera in this scene.
@@ -102,16 +109,30 @@ public class PlayerPickup : MonoBehaviour
     /// <param name="interactable"></param>
     private void HandleInteractableHover(IInteractable interactable)
     {
-        hoveredItem = interactable;
+        // Switchs the hovered item to the new hovered item
+        if(hoveredItem != interactable)
+        {
+            ResetHoverItem();
 
+            interactable.HighlightObject();
+            interactable.DisplayObjectName();
+
+            hoveredItem = interactable;
+        }
+
+        // Picks up the item
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             interactable.Pickup(pickUpDest);
             heldItem = interactable;
         }
 
-        interactable.HighlightObject();
-        interactable.DisplayObjectName();
+        // Equips the item
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            interactable.Equip();
+            equipedItem = interactable;
+        }
     }
     #endregion
 }

@@ -68,6 +68,14 @@ public class Outline : MonoBehaviour {
   + "Precompute disabled: Per-vertex calculations are performed at runtime in Awake(). This may cause a pause for large meshes.")]
   private bool precomputeOutline;
 
+    public bool PreComputeOutline
+    {
+        set
+        {
+            precomputeOutline = value;
+        }
+    }
+
   [SerializeField, HideInInspector]
   private List<Mesh> bakeKeys = new List<Mesh>();
 
@@ -101,9 +109,8 @@ public class Outline : MonoBehaviour {
 
   void OnEnable() {
     foreach (var renderer in renderers) {
-
-      // Append outline shaders
-      var materials = renderer.sharedMaterials.ToList();
+            // Append outline shaders
+            var materials = renderer.sharedMaterials.ToList();
 
       materials.Add(outlineMaskMaterial);
       materials.Add(outlineFillMaterial);

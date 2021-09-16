@@ -1,12 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+/*****************************************************************************
+// File Name :         PlayerController.cs
+// Author :            Jacob Welch
+// Creation Date :     15 September 2021
+//
+// Brief Description : Handles the inputs of the player and controls them.
+*****************************************************************************/
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    /// <summary>
+    /// The pausemenu in the scene.
+    /// </summary>
     private PauseMenuBehavior pauseMenu;
+
+    /// <summary>
+    /// The player movement script on this player.
+    /// </summary>
     private PlayerMovement pm;
+
+    /// <summary>
+    /// The player pick up script on this player.
+    /// </summary>
     private PlayerPickup pp;
 
     /// <summary>
@@ -21,6 +37,9 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Inputs
+    /// <summary>
+    /// Checks if the player is picking up an object.
+    /// </summary>
     private void Update()
     {
         pp.CheckObject();
@@ -52,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Calls for the player to crouch or uncrouch.
+    /// </summary>
     public void OnCrouch()
     {
         pm.Crouch();
