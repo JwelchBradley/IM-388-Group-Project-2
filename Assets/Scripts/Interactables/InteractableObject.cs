@@ -15,6 +15,7 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     #region Variables
+    #region Components
     /// <summary>
     /// The TextMeshProUGUI component in the scene the renders the objects name.
     /// </summary>
@@ -34,12 +35,39 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// The MeshCollider of this object.
     /// </summary>
     private MeshCollider mesh;
+    #endregion
 
+    #region Pickup
     [Header("Pickup")]
     [SerializeField]
     [Tooltip("How fast the object is pulled to the player")]
     [Range(5, 30)]
-    private float objectMoveSpeed = 20;
+    private float objectMoveSpeed = 12;
+    #endregion
+
+    #region Equip
+    [Header("Equip")]
+    [SerializeField]
+    [Tooltip("The offset from the default equip position")]
+    private Vector3 equipOffset = Vector3.zero;
+
+    [SerializeField]
+    [Tooltip("The roation of the object when it is equiped")]
+    private Vector3 equipRotation = Vector3.zero;
+
+    [SerializeField]
+    [Tooltip("The force applied to the object when it is unequiped")]
+    protected float unequipThrowForce = 800;
+
+    [SerializeField]
+    [Tooltip("The force of throwing the object")]
+    private float throwForce = 1200;
+    #endregion
+
+    /// <summary>
+    /// The main camera of this scene.
+    /// </summary>
+    private Camera mainCamera;
     #endregion
 
     #region Functions
@@ -77,6 +105,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
         mesh = GetComponent<MeshCollider>();
 
         // Gets other objects components
+        mainCamera = Camera.main;
         displayName = GameObject.Find("Display Name").GetComponent<TextMeshProUGUI>();
     }
     #endregion
@@ -139,10 +168,11 @@ public class InteractableObject : MonoBehaviour, IInteractable
                     canGrab = false;
                     break;
                 }
-                else
-                {
-                    canGrab = true;
-                }
+            }
+
+            if(PlayerMovement.playerIsOn.Length == 0)
+            {
+                canGrab = true;
             }
 
             if(canGrab)
@@ -152,6 +182,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
                 dir = dir.normalized * currentMoveSpeed;
                 rb.velocity = dir;
             }
+            else
+            {
+                //rb.velocity = Vector3.zero;
+            }
 
             yield return new WaitForEndOfFrame();
         }
@@ -160,15 +194,67 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public void Drop()
     {
         rb.useGravity = true;
-        transform.parent = null;
         StopAllCoroutines();
     }
     #endregion
 
     #region Equip
-    public void Equip()
+    /// <summary>
+    /// Equips an item to the equiplocation with an offeset.
+    /// </summary>
+    /// <param name="equipLocation"></param>
+    public void Equip(GameObject equipLocation)
     {
-        throw new System.NotImplementedException();
+        // Sets the objects collision
+        rb.isKinematic = true;
+        gameObject.layer = LayerMask.NameToLayer("Equipped");
+
+        // Sets the objects position and rotation
+        transform.rotation = Quaternion.Euler(equipRotation);
+        transform.position = equipLocation.transform.position + equipOffset;
+        transform.parent = equipLocation.transform;
+    }
+
+    /// <summary>
+    /// Unequips the object from the player.
+    /// </summary>
+    public void UnEquip()
+    {
+        StartCoroutine(UnEquipHelper());
+        rb.isKinematic = false;
+        transform.parent = null;
+    }
+
+    private IEnumerator UnEquipHelper()
+    {
+        yield return new WaitForSeconds(0.2f);
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
+    }
+
+    /// <summary>
+    /// Throws the object if it is equipped.
+    /// </summary>
+    public void Throw(float throwForce)
+    {
+        rb.AddForce(mainCamera.transform.forward * throwForce);
+    }
+
+    /// <summary>
+    /// Uses the action of this object, defaults to throw.
+    /// </summary>
+    public void EquipAction(ref IInteractable equipedItem)
+    {
+        UnEquip();
+        Throw(throwForce);
+        equipedItem = null;
+    }
+
+    /// <summary>
+    /// Throws the object forward a little bit.
+    /// </summary>
+    public void UnEquipAction()
+    {
+        Throw(unequipThrowForce);
     }
     #endregion
     #endregion
