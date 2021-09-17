@@ -594,7 +594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f042215c68f9e4b95a5b8bf6ee9ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineWidth: 10
   objectMoveSpeed: 20
 --- !u!114 &316182320
 MonoBehaviour:
@@ -1299,7 +1298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f042215c68f9e4b95a5b8bf6ee9ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineWidth: 10
   objectMoveSpeed: 20
 --- !u!64 &492361914
 MeshCollider:
@@ -3328,7 +3326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f042215c68f9e4b95a5b8bf6ee9ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineWidth: 10
   objectMoveSpeed: 20
 --- !u!114 &1071807396
 MonoBehaviour:
@@ -5078,7 +5075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f042215c68f9e4b95a5b8bf6ee9ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineWidth: 10
   objectMoveSpeed: 20
 --- !u!114 &1845439107
 MonoBehaviour:
