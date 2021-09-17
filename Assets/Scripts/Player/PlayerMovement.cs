@@ -82,6 +82,10 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("The layer mask of the ground")]
     private LayerMask groundMask;
 
+    [SerializeField]
+    [Tooltip("The layer mask of interactables")]
+    private LayerMask interactableMask;
+
     /// <summary>
     /// Holds true if the player is on the ground.
     /// </summary>
@@ -228,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void IsOnObject()
     {
-        playerIsOn = Physics.OverlapSphere(groundCheckPos.transform.position, 1, groundMask);
+        playerIsOn = Physics.OverlapSphere(groundCheckPos.transform.position, 1, interactableMask);
     }
 
     /// <summary>

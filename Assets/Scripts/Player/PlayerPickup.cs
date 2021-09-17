@@ -15,6 +15,14 @@ public class PlayerPickup : MonoBehaviour
     [Tooltip("The position that the object will be picked up to")]
     private GameObject pickUpDest;
 
+    [SerializeField]
+    [Tooltip("The position that the object will be equiped to")]
+    private GameObject equipLocation;
+
+    [SerializeField]
+    [Tooltip("The mask of interactable objects")]
+    private LayerMask interactableMask;
+
     #region Item References
     /// <summary>
     /// The interactable script of a held item.
@@ -39,6 +47,7 @@ public class PlayerPickup : MonoBehaviour
     #endregion
 
     #region Functions
+    #region Initiliaze
     /// <summary>
     /// Gets the main camera in the scene.
     /// </summary>
@@ -46,6 +55,7 @@ public class PlayerPickup : MonoBehaviour
     {
         main = Camera.main;     
     }
+    #endregion
 
     /// <summary>
     /// Checks if the player wants to drop a held item.
@@ -57,8 +67,21 @@ public class PlayerPickup : MonoBehaviour
             heldItem.Drop();
             heldItem = null;
         }
+
+        if(equipedItem != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                equipedItem.EquipAction(ref equipedItem);
+            }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                ResetEquippedItem();
+            }
+        }
     }
 
+    #region Hover
     /// <summary>
     /// Checks if the object the player is looking at is an interactable object.
     /// </summary>
@@ -70,24 +93,32 @@ public class PlayerPickup : MonoBehaviour
             Ray ray = main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, pickupDist))
+            // Casts out to see if there is an interactable object
+            if (Physics.Raycast(ray, out hit, pickupDist, interactableMask))
             {
                 IInteractable interactable = hit.transform.gameObject.GetComponent<IInteractable>();
 
-                if (interactable != null)
-                {
-                    HandleInteractableHover(interactable);
-                }
-                else
-                {
-                    ResetHoverItem();
-                }
+                HandleInteractableHover(interactable);
             }
             else
             {
                 ResetHoverItem();
             }
         }
+    }
+
+    /// <summary>
+    /// Sets what the current hover object is.
+    /// </summary>
+    /// <param name="interactable">The currently hovered interactable object.</param>
+    private void SetHoverObject(IInteractable interactable)
+    {
+        ResetHoverItem();
+
+        // Makes object the current Hover Object
+        interactable.HighlightObject();
+        interactable.DisplayObjectName();
+        hoveredItem = interactable;
     }
 
     /// <summary>
@@ -102,7 +133,9 @@ public class PlayerPickup : MonoBehaviour
             hoveredItem = null;
         }
     }
+    #endregion
 
+    #region Equip
     /// <summary>
     /// Handles the interactions when an interactable object is being hovered over.
     /// </summary>
@@ -110,29 +143,55 @@ public class PlayerPickup : MonoBehaviour
     private void HandleInteractableHover(IInteractable interactable)
     {
         // Switchs the hovered item to the new hovered item
-        if(hoveredItem != interactable)
+        if(hoveredItem != interactable && equipedItem != interactable)
         {
-            ResetHoverItem();
-
-            interactable.HighlightObject();
-            interactable.DisplayObjectName();
-
-            hoveredItem = interactable;
+            SetHoverObject(interactable);
         }
 
         // Picks up the item
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            interactable.Pickup(pickUpDest);
-            heldItem = interactable;
+            if(equipedItem == null)
+            {
+                interactable.Pickup(pickUpDest);
+                heldItem = interactable;
+            }
         }
 
-        // Equips the item
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            interactable.Equip();
+            EquipItem(interactable);
+        }
+    }
+
+    #region Equip
+    /// <summary>
+    /// Sets what the current equiped item is.
+    /// </summary>
+    /// <param name="interactable">The currently hovered interactable object.</param>
+    private void EquipItem(IInteractable interactable)
+    {
+        if (equipedItem != interactable)
+        {
+            ResetEquippedItem();
+            interactable.Equip(equipLocation);
             equipedItem = interactable;
         }
     }
+
+    /// <summary>
+    /// Resets any currently equipped item.
+    /// </summary>
+    private void ResetEquippedItem()
+    {
+        if(equipedItem != null)
+        {
+            equipedItem.UnEquip();
+            equipedItem.UnEquipAction();
+            equipedItem = null;
+        }
+    }
+    #endregion
+    #endregion
     #endregion
 }
