@@ -3,7 +3,8 @@
 // Author :            Jacob Welch
 // Creation Date :     28 August 2021
 //
-// Brief Description : Allows the player to 
+// Brief Description : Allows the player to interact with object in a default
+                       way. Objects can be held, equipped, dropped, and highlighted.
 *****************************************************************************/
 using System.Collections;
 using TMPro;
@@ -55,6 +56,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [Tooltip("The roation of the object when it is equiped")]
     private Vector3 equipRotation = Vector3.zero;
 
+    [Space]
     [SerializeField]
     [Tooltip("The force applied to the object when it is unequiped")]
     protected float unequipThrowForce = 800;
@@ -62,6 +64,20 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [SerializeField]
     [Tooltip("The force of throwing the object")]
     private float throwForce = 1200;
+
+    [Space]
+    [SerializeField]
+    [Tooltip("Holds true if this object can be equipped")]
+    protected bool canEquip = true;
+
+    /// <summary>
+    /// Returns true if this object can be equiped.
+    /// </summary>
+    /// <returns></returns>
+    public bool CanEquip()
+    {
+        return canEquip;
+    }
     #endregion
 
     /// <summary>
@@ -148,11 +164,20 @@ public class InteractableObject : MonoBehaviour, IInteractable
     #endregion
 
     #region Pickup
+    /// <summary>
+    /// Starts the picking up routine.
+    /// </summary>
+    /// <param name="pickUpDest"></param>
     public void Pickup(GameObject pickUpDest)
     {
         StartCoroutine(PickupHelper(pickUpDest));
     }
 
+    /// <summary>
+    /// Moves the object to the hold location as long as the player is not on top of it.
+    /// </summary>
+    /// <param name="pickUpDest">The hold location for this object.</param>
+    /// <returns></returns>
     private IEnumerator PickupHelper(GameObject pickUpDest)
     {
         rb.useGravity = false;
@@ -161,6 +186,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
         while (true)
         {
+            // Checks if the player is on this object
             foreach(Collider col in PlayerMovement.playerIsOn)
             {
                 if (mesh.Equals(col))
@@ -170,6 +196,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
                 }
             }
 
+            // Allow the player to grab this object again
             if(PlayerMovement.playerIsOn.Length == 0)
             {
                 canGrab = true;
@@ -182,15 +209,14 @@ public class InteractableObject : MonoBehaviour, IInteractable
                 dir = dir.normalized * currentMoveSpeed;
                 rb.velocity = dir;
             }
-            else
-            {
-                //rb.velocity = Vector3.zero;
-            }
 
             yield return new WaitForEndOfFrame();
         }
     }
 
+    /// <summary>
+    /// When the player stops holding this object it is dropped.
+    /// </summary>
     public void Drop()
     {
         rb.useGravity = true;
@@ -225,6 +251,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
         transform.parent = null;
     }
 
+    /// <summary>
+    /// Waits to give the object collisions again.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator UnEquipHelper()
     {
         yield return new WaitForSeconds(0.2f);
@@ -242,7 +272,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// <summary>
     /// Uses the action of this object, defaults to throw.
     /// </summary>
-    public void EquipAction(ref IInteractable equipedItem)
+    public virtual void EquipAction(ref IInteractable equipedItem)
     {
         UnEquip();
         Throw(throwForce);

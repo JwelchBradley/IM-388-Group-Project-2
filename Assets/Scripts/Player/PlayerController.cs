@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Variables
     /// <summary>
     /// The pausemenu in the scene.
     /// </summary>
@@ -24,7 +25,10 @@ public class PlayerController : MonoBehaviour
     /// The player pick up script on this player.
     /// </summary>
     private PlayerPickup pp;
+    #endregion
 
+    #region Funcitons
+    #region Initialize
     /// <summary>
     /// Initiliazes the player.
     /// </summary>
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour
         pp = GetComponent<PlayerPickup>();
         Cursor.lockState = CursorLockMode.Locked;
     }
+    #endregion
 
     #region Inputs
     /// <summary>
@@ -78,5 +83,6 @@ public class PlayerController : MonoBehaviour
     {
         pm.Crouch();
     }
+    #endregion
     #endregion
 }

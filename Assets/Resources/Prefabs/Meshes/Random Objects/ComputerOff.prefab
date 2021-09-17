@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6763839759365236134}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 130, y: 55, z: 205}
   m_Children: []
@@ -227,4 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f042215c68f9e4b95a5b8bf6ee9ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMoveSpeed: 20
+  objectMoveSpeed: 12
+  equipOffset: {x: 0, y: 0, z: 0}
+  equipRotation: {x: 0, y: 0, z: 0}
+  unequipThrowForce: 800
+  throwForce: 1200

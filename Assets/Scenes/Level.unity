@@ -3058,11 +3058,6 @@ Transform:
   m_Father: {fileID: 1152700071}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &904286670 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1119962704133113646, guid: 5d6f195fe3657894d89fcd8709e6bc35, type: 3}
-  m_PrefabInstance: {fileID: 1119962703162419971}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &930468614
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,36 +4109,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1274134928
+--- !u!1 &1274134928 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1274134928, guid: 5d6f195fe3657894d89fcd8709e6bc35, type: 3}
+  m_PrefabInstance: {fileID: 1119962703162419971}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1274134929}
-  m_Layer: 0
-  m_Name: Equip Desination
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1274134929
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274134928}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.382, y: -0.72, z: 1.14}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 904286670}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1292270533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8837074070760430909, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
@@ -9201,14 +9171,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8837074069080216914, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8837074069219185250, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: m_StepOffset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8837074069219185251, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -9253,14 +9215,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8837074069219185252, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: gravity
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8837074069219185252, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: interactableMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 8837074069219185253, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
       propertyPath: pickUpDest
       value: 
@@ -9269,29 +9223,9 @@ PrefabInstance:
       propertyPath: equipLocation
       value: 
       objectReference: {fileID: 1274134928}
-    - target: {fileID: 8837074069219185253, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: interactableMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 8837074069219185263, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8837074069219185263, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8837074069345544470, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8837074069959588555, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8837074070760430908, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f295147c5cde4fd4186a36ee3e24dd4c, type: 3}
