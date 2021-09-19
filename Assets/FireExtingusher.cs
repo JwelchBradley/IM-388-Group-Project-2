@@ -13,7 +13,10 @@ public class FireExtingusher : InteractableObject
 
     public override void EquipAction(ref IInteractable equipedItem)
     {
-        steam.Play();
+        if(Time.timeScale != 0)
+        {
+            steam.Play();
+        }
     }
 
     public void Update()

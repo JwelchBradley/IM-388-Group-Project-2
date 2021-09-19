@@ -838,6 +838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Low Poly Person 2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99f647d650533ac4a926a6a346b7283b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99f647d650533ac4a926a6a346b7283b, type: 3}
 --- !u!4 &283039132 stripped
@@ -1371,6 +1375,7 @@ MonoBehaviour:
   - {fileID: 1306327166}
   - {fileID: 1306327165}
   - {fileID: 1306327164}
+  canPause: 0
   menuPanels:
   - {fileID: 1306327163}
   - {fileID: 1852778121}
@@ -7802,6 +7807,8 @@ MonoBehaviour:
   hint2: []
   hint3: []
   numProblems: 1
+  winScreen: {fileID: 0}
+  loseScreen: {fileID: 0}
 --- !u!1001 &1553315624
 PrefabInstance:
   m_ObjectHideFlags: 0

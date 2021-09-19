@@ -19,9 +19,10 @@ public class SteamBehaviour : MonoBehaviour
         if (steam.isEmitting)
         {
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward, out hit, 3f, mask, QueryTriggerInteraction.Collide))
+            if(Physics.Raycast(transform.position, transform.forward, out hit, 4f, mask, QueryTriggerInteraction.Collide))
             {
                 hit.transform.gameObject.GetComponent<FireBehaviour>().StopParticles();
+                hit.transform.gameObject.SetActive(false);
             }
         }
     }

@@ -10,6 +10,8 @@ public class FireBehaviour : MonoBehaviour
     [SerializeField]
     PatientBehaviour patient;
 
+    bool hasBeenPutOut = false;
+
     private void Awake()
     {
         fire = GetComponent<ParticleSystem>();
@@ -18,8 +20,13 @@ public class FireBehaviour : MonoBehaviour
 
     public void StopParticles()
     {
-        patient.UpdateProblems();
-        fire.Stop();
-        smoke.Stop();
+        if (!hasBeenPutOut)
+        {
+            Debug.Log(true);
+            patient.UpdateProblems();
+            fire.Stop();
+            smoke.Stop();
+            hasBeenPutOut = true;
+        }
     }
 }

@@ -53,12 +53,18 @@ public class PatientBehaviour : MonoBehaviour
     private int numProblems;
     #endregion
 
+    [SerializeField]
+    [Tooltip("The win screen for the game")]
+    private GameObject winScreen;
+
+    [SerializeField]
+    [Tooltip("The lose screen for the game")]
+    private GameObject loseScreen;
+
     private void Awake()
     {
         timeLeft = survivalTime;
         StartCoroutine(DisplayHints());
-        //
-        numProblems = 1;
     }
 
     private IEnumerator DisplayHints()
@@ -93,19 +99,36 @@ public class PatientBehaviour : MonoBehaviour
 
     private void PatientDeath()
     {
-
+        DisplayWinLoseScreen(loseScreen);
     }
 
     private void CurePatient()
     {
-        print("Cured");
+        DisplayWinLoseScreen(winScreen);
+    }
+
+    private void DisplayWinLoseScreen(GameObject screen)
+    {
+        GameObject pauseMenu = GameObject.Find("Pause Menu Templates Canvas");
+        pauseMenu.GetComponent<PauseMenuBehavior>().canPause = false;
+        pauseMenu.SetActive(false);
+
+        GameObject.Find("Walk vcam").SetActive(false);
+        GameObject.Find("Crouch vcam").SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
+        Time.timeScale = 0;
+
+        screen.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Chair"))
         {
-            UpdateProblems();
+            //UpdateProblems();
         }
     }
 

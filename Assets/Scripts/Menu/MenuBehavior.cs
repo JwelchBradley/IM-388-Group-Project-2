@@ -60,6 +60,7 @@ public class MenuBehavior : MonoBehaviour
 
     public void PlayAudio(AudioSource audio)
     {
+        if(audio != null)
         audio.PlayOneShot(audio.clip);
     }
 
