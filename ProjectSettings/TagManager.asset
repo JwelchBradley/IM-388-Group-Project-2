@@ -15,10 +15,10 @@ TagManager:
   - Interactable
   - Equipped
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Fire
+  - Furniture
+  - Held
+  - Door
   - 
   - 
   - 
