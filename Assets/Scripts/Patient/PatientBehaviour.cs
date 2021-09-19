@@ -57,6 +57,8 @@ public class PatientBehaviour : MonoBehaviour
     {
         timeLeft = survivalTime;
         StartCoroutine(DisplayHints());
+        //
+        numProblems = 1;
     }
 
     private IEnumerator DisplayHints()
@@ -96,6 +98,15 @@ public class PatientBehaviour : MonoBehaviour
 
     private void CurePatient()
     {
-
+        print("Cured");
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Chair"))
+        {
+            UpdateProblems();
+        }
+    }
+
 }

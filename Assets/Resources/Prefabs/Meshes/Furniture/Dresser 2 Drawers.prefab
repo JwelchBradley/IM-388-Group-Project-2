@@ -75,7 +75,7 @@ HingeJoint:
   m_Anchor: {x: -0.035, y: 0.01, z: 0.02}
   m_Axis: {x: 0, y: 0, z: 90}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -18.620125, y: 0.7246189, z: 15.553474}
+  m_ConnectedAnchor: {x: -3.5, y: 2, z: -1}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -243,7 +243,7 @@ HingeJoint:
   m_Anchor: {x: 0.035, y: 0.01, z: 0.02}
   m_Axis: {x: 0, y: 0, z: 90}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -11.620125, y: 0.7246189, z: 15.553474}
+  m_ConnectedAnchor: {x: 3.5, y: 2, z: -1}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -369,6 +369,20 @@ MonoBehaviour:
     - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
     - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
     - {x: -0.132776, y: 0.97759116, z: 0.16335855}
+--- !u!64 &9216717576328105769
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8545457157955994594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5093089925602084685, guid: d17d2d468cf271a4abaf984488461021, type: 3}
 --- !u!1001 &8815508007460044467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d17d2d468cf271a4abaf984488461021, type: 3}
+--- !u!1 &8545457157955994594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d17d2d468cf271a4abaf984488461021, type: 3}
+  m_PrefabInstance: {fileID: 8815508007460044467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9069194869946784088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d17d2d468cf271a4abaf984488461021, type: 3}
