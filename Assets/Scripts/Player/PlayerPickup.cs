@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPickup : MonoBehaviour
 {
     #region Variables
+    #region Interactaction Attributes
     [Header("Pickup")]
     [SerializeField]
     [Tooltip("The speed the player moves while standing")]
@@ -22,6 +23,7 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField]
     [Tooltip("The mask of interactable objects")]
     private LayerMask interactableMask;
+    #endregion
 
     #region Item References
     /// <summary>
@@ -164,14 +166,13 @@ public class PlayerPickup : MonoBehaviour
         }
     }
 
-    #region Equip
     /// <summary>
     /// Sets what the current equiped item is.
     /// </summary>
     /// <param name="interactable">The currently hovered interactable object.</param>
     private void EquipItem(IInteractable interactable)
     {
-        if (equipedItem != interactable)
+        if (equipedItem != interactable && interactable.CanEquip())
         {
             ResetEquippedItem();
             interactable.Equip(equipLocation);
@@ -191,7 +192,6 @@ public class PlayerPickup : MonoBehaviour
             equipedItem = null;
         }
     }
-    #endregion
     #endregion
     #endregion
 }

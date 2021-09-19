@@ -91,6 +91,9 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private bool isGrounded = false;
 
+    /// <summary>
+    /// Holds reference to interactable objects that the player is on.
+    /// </summary>
     public static Collider[] playerIsOn;
     #endregion
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8837074069080216915}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crouch Head Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8837074069219185252}
   - component: {fileID: 8837074069219185248}
   - component: {fileID: 8837074069219185253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ CharacterController:
   m_Height: 3.8
   m_Radius: 0.6
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -114,12 +114,16 @@ MonoBehaviour:
   walkSpeed: 10
   crouchWalkSpeed: 6
   jumpHeight: 3
-  gravity: -9.8
+  crouchJumpHeight: 3
+  gravity: -20
   groundCheckDist: 0.5
   groundCheckPos: {fileID: 8837074069345544470}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &8837074069219185248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupDist: 6
   pickUpDest: {fileID: 0}
+  equipLocation: {fileID: 0}
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &8837074069345544470
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8837074069345544471}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +214,7 @@ GameObject:
   - component: {fileID: 8837074069959588559}
   - component: {fileID: 8837074069959588558}
   - component: {fileID: 8837074069959588557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8837074070760430909}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head Placement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
