@@ -10,31 +10,92 @@ public class InteractableDrawer : MonoBehaviour
 
     private Vector3 openPos;
 
+    private Rigidbody rb;
+
     [SerializeField]
     private float amountForward = 2.4f;
 
+    private GameObject player;
+
+    private Coroutine currentMove;
+
+    private float time = 0;
+
     private void Awake()
     {
+        player = GameObject.Find("Player");
         startPos = transform.position;
+        rb = GetComponent<Rigidbody>();
         outline = GetComponent<Outline>();
         outline.enabled = false;
         openPos = startPos + transform.up * amountForward;
     }
 
-    private void OnMouseEnter()
+    private bool PlayerCloseEnough()
     {
-        outline.enabled = true;
+        return Vector3.Distance(player.transform.position, transform.position) <= 6;
+    }
+
+    private void OnMouseOver()
+    {
+        bool closeness = PlayerCloseEnough();
+
+        if (closeness && !outline.isActiveAndEnabled)
+        {
+            outline.enabled = true;
+        }
+        else if(!closeness)
+        {
+            outline.enabled = false;
+        }
     }
 
     private void OnMouseDown()
     {
-        if(transform.position != startPos)
+        if (PlayerCloseEnough())
         {
-            transform.position = startPos;
+            if (transform.position != startPos)
+            {
+                StopAllCoroutines();
+                StartCoroutine(MoveDrawerIn());
+            }
+            else
+            {
+                StopAllCoroutines();
+                StartCoroutine(MoveDrawerOut());
+            }
         }
-        else
+    }
+
+    private IEnumerator MoveDrawerOut()
+    {
+        Vector3 drawerPos = transform.position;
+
+        while (transform.position != openPos)
         {
-            transform.position = openPos;
+            time += Time.fixedDeltaTime*2;
+            if(time >= 2)
+            {
+                time = 2;
+            }
+            rb.position = Vector3.MoveTowards(drawerPos, openPos, time);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private IEnumerator MoveDrawerIn()
+    {
+        Vector3 drawerPos = transform.position;
+
+        while (transform.position != startPos)
+        {
+            time -= Time.fixedDeltaTime*2;
+            if (time < 0)
+            {
+                time = 0;
+            }
+            rb.position = Vector3.MoveTowards(startPos, drawerPos, time);
+            yield return new WaitForFixedUpdate();
         }
     }
 
