@@ -552,7 +552,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7765957, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3163,6 +3163,22 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1466622233}
+    - target: {fileID: 1785420432696088898, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420433268894787, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420433268894787, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420433268894787, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1785420433290114326, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3250,6 +3266,87 @@ PrefabInstance:
     - target: {fileID: 1785420433290114327, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
       propertyPath: m_Name
       value: Credits Templates
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420433290114327, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434213618877, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434213618877, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434213618877, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434213618877, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434213618877, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434213618877, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914537, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914550, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914550, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914550, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914550, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914550, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434267914550, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785420434429610891, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
+      propertyPath: m_text
+      value: '<U>Software Engineer</U>
+
+        Jacob Welch
+
+
+        <u>Art</u>
+
+        Austin
+        Dahmm
+
+        Connor Dunn
+
+
+        <u>Sound Designer</u>
+
+        Jake
+        Weber
+
+
+        <u>Game Designer</u>
+
+        Zal Daboo'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67e20e42230fb12469be0bc7900aacd9, type: 3}
