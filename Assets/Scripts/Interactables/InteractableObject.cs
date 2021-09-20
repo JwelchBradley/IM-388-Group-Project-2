@@ -70,6 +70,14 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [Tooltip("Holds true if this object can be equipped")]
     protected bool canEquip = true;
 
+    [SerializeField]
+    [Tooltip("The layer this object defaults to")]
+    protected string interactableLayer = "Interactable";
+
+    [SerializeField]
+    [Tooltip("The layer this object changes to when it is held")]
+    protected string heldLayer = "Held";
+
     /// <summary>
     /// Returns true if this object can be equiped.
     /// </summary>
@@ -170,6 +178,8 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// <param name="pickUpDest"></param>
     public void Pickup(GameObject pickUpDest)
     {
+        gameObject.layer = LayerMask.NameToLayer(heldLayer);
+
         StartCoroutine(PickupHelper(pickUpDest));
     }
 
@@ -209,6 +219,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
                 dir = dir.normalized * currentMoveSpeed;
                 rb.velocity = dir;
             }
+            else
+            {
+                rb.velocity = Vector3.zero;
+            }
 
             yield return new WaitForEndOfFrame();
         }
@@ -219,6 +233,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     public void Drop()
     {
+        gameObject.layer = LayerMask.NameToLayer(interactableLayer);
         rb.useGravity = true;
         StopAllCoroutines();
     }
@@ -236,7 +251,8 @@ public class InteractableObject : MonoBehaviour, IInteractable
         gameObject.layer = LayerMask.NameToLayer("Equipped");
 
         // Sets the objects position and rotation
-        transform.rotation = Quaternion.Euler(equipRotation);
+        //transform.rotation = equipLocation.transform.rotation * Quaternion.Euler(equipRotation);
+        transform.forward = mainCamera.transform.forward;
         transform.position = equipLocation.transform.position + equipOffset;
         transform.parent = equipLocation.transform;
     }
@@ -258,7 +274,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     private IEnumerator UnEquipHelper()
     {
         yield return new WaitForSeconds(0.2f);
-        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        gameObject.layer = LayerMask.NameToLayer(interactableLayer);
     }
 
     /// <summary>
