@@ -120,10 +120,10 @@ MonoBehaviour:
   groundCheckPos: {fileID: 8837074069345544470}
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 5192
   interactableMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2048
 --- !u!114 &8837074069219185248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   equipLocation: {fileID: 0}
   interactableMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
 --- !u!1 &8837074069345544470
 GameObject:
   m_ObjectHideFlags: 0

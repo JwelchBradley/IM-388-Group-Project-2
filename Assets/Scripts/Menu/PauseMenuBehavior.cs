@@ -23,7 +23,8 @@ public class PauseMenuBehavior : MenuBehavior
     /// <summary>
     /// Enables and disables the pause feature.
     /// </summary>
-    private bool canPause = false;
+    [HideInInspector]
+    public bool canPause = false;
 
     [Space]
     [SerializeField]

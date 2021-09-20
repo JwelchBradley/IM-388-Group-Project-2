@@ -100,6 +100,7 @@ public class PlayerPickup : MonoBehaviour
             {
                 IInteractable interactable = hit.transform.gameObject.GetComponent<IInteractable>();
 
+                if(interactable != null)
                 HandleInteractableHover(interactable);
             }
             else

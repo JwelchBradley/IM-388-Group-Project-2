@@ -18,7 +18,9 @@ public class InteractableDoor : InteractableObject
     private void Reset()
     {
         // Sets the objects layer to interactable
-        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        gameObject.layer = LayerMask.NameToLayer("Door");
+        interactableLayer = "Door";
+        heldLayer = "Door";
 
         // Initiliazes the meshcollider to be convex
         GetComponent<MeshCollider>().convex = true;

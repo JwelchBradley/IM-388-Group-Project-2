@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858220735175655881}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dresser 2 Drawers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ HingeJoint:
   m_Anchor: {x: -0.035, y: 0.01, z: 0.02}
   m_Axis: {x: 0, y: 0, z: 90}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.5, y: 2, z: -1}
+  m_ConnectedAnchor: {x: -18.620125, y: 0.7246189, z: 15.553474}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -116,7 +116,9 @@ MonoBehaviour:
   equipRotation: {x: 0, y: 0, z: 0}
   unequipThrowForce: 800
   throwForce: 1200
-  canEquip: 1
+  canEquip: 0
+  interactableLayer: Door
+  heldLayer: Door
 --- !u!114 &1396382144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ HingeJoint:
   m_Anchor: {x: 0.035, y: 0.01, z: 0.02}
   m_Axis: {x: 0, y: 0, z: 90}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.5, y: 2, z: -1}
+  m_ConnectedAnchor: {x: -11.620125, y: 0.7246189, z: 15.553474}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -284,7 +286,9 @@ MonoBehaviour:
   equipRotation: {x: 0, y: 0, z: 0}
   unequipThrowForce: 800
   throwForce: 1200
-  canEquip: 1
+  canEquip: 0
+  interactableLayer: Door
+  heldLayer: Door
 --- !u!114 &623646598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dresser Big No Doors
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d17d2d468cf271a4abaf984488461021, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d17d2d468cf271a4abaf984488461021, type: 3}
 --- !u!1 &8545457157955994594 stripped
@@ -515,7 +523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a9781a0f59f2b474dbbced7248bda2d4, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9781a0f59f2b474dbbced7248bda2d4, type: 3}
@@ -590,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 932bd40c22d28764e87ddb2ebb344449, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 932bd40c22d28764e87ddb2ebb344449, type: 3}

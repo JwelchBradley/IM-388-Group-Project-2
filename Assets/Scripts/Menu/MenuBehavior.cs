@@ -13,9 +13,8 @@ using UnityEngine.SceneManagement;
 public class MenuBehavior : MonoBehaviour
 {
     #region Variables
-    [SerializeField]
     [Tooltip("Animator of level crossfade")]
-    protected Animator crossfadeAnim;
+    public Animator crossfadeAnim;
 
     [SerializeField]
     [Tooltip("Tick true if there is a loading screen")]
@@ -60,6 +59,7 @@ public class MenuBehavior : MonoBehaviour
 
     public void PlayAudio(AudioSource audio)
     {
+        if(audio != null)
         audio.PlayOneShot(audio.clip);
     }
 
