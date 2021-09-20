@@ -64,6 +64,7 @@ public class PatientBehaviour : MonoBehaviour
     private void Awake()
     {
         timeLeft = survivalTime;
+        GetComponentInChildren<MenuBehavior>().crossfadeAnim = GameObject.Find("Pause Menu Templates Canvas").GetComponent<PauseMenuBehavior>().crossfadeAnim;
         StartCoroutine(DisplayHints());
     }
 

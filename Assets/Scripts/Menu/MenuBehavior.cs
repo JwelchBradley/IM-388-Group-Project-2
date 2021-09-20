@@ -13,9 +13,8 @@ using UnityEngine.SceneManagement;
 public class MenuBehavior : MonoBehaviour
 {
     #region Variables
-    [SerializeField]
     [Tooltip("Animator of level crossfade")]
-    protected Animator crossfadeAnim;
+    public Animator crossfadeAnim;
 
     [SerializeField]
     [Tooltip("Tick true if there is a loading screen")]

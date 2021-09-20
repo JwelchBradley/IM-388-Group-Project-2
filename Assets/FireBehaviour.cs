@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBehaviour : MonoBehaviour
@@ -22,7 +20,6 @@ public class FireBehaviour : MonoBehaviour
     {
         if (!hasBeenPutOut)
         {
-            Debug.Log(true);
             patient.UpdateProblems();
             fire.Stop();
             smoke.Stop();

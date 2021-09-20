@@ -201,7 +201,6 @@ public class InteractableObject : MonoBehaviour, IInteractable
             {
                 if (mesh.Equals(col))
                 {
-                    Debug.Log(true);
                     canGrab = false;
                     break;
                 }

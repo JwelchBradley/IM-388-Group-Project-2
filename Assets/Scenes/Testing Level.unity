@@ -2964,38 +2964,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 623646596, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: canEquip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 623646599, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -11.620125
-      objectReference: {fileID: 0}
-    - target: {fileID: 623646599, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.7246189
-      objectReference: {fileID: 0}
-    - target: {fileID: 623646599, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 15.553474
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396382142, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: canEquip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396382145, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -18.620125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396382145, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.7246189
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396382145, guid: 3102661628752ec41828b63ff58a9889, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 15.553474
-      objectReference: {fileID: 0}
     - target: {fileID: 891885180498970382, guid: 3102661628752ec41828b63ff58a9889, type: 3}
       propertyPath: m_Name
       value: Dresser 2 Drawers
