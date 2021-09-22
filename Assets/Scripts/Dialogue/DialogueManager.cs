@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     public Text dialogueText;
+    public GameObject dialoguePanel; 
 
     Vector3 camPos;
 
@@ -20,11 +21,15 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
 
+        dialoguePanel.SetActive(false);
+
         camPos = Camera.main.transform.position;
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        dialoguePanel.SetActive(true);
+
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -39,6 +44,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (sentences.Count <= 0)
         {
+            dialoguePanel.SetActive(false);
+
             return;
         }
 
@@ -69,7 +76,7 @@ public class DialogueManager : MonoBehaviour
             char name = test;
             //char c = 'b'; you may use lower case character.
             int index = char.ToUpper(name) - 64;//index == 1
-            Debug.Log(index);
+            //Debug.Log(index);
             return DialogueSnds.Sounds[index];
         }
         else return DialogueSnds.Sounds[26];
