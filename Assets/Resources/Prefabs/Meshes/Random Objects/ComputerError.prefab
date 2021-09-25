@@ -232,3 +232,6 @@ MonoBehaviour:
   equipRotation: {x: 0, y: 0, z: 0}
   unequipThrowForce: 800
   throwForce: 1200
+  canEquip: 1
+  interactableLayer: Interactable
+  heldLayer: Held
