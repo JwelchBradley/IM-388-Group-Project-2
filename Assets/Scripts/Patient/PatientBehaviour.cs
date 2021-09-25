@@ -36,15 +36,15 @@ public class PatientBehaviour : MonoBehaviour
     [Header("Hints")]
     [SerializeField]
     [Tooltip("An array of the first hints this patient might give")]
-    private string[] hint1;
+    private Dialogue hint1;
 
     [SerializeField]
     [Tooltip("An array of the second hints this patient might give")]
-    private string[] hint2;
+    private Dialogue hint2;
 
     [SerializeField]
     [Tooltip("An array of the third hints this patient might give")]
-    private string[] hint3;
+    private Dialogue hint3;
     #endregion
 
     #region Solution
@@ -72,9 +72,15 @@ public class PatientBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(hintTime1);
 
+        FindObjectOfType<DialogueManager>().StartDialogue(hint1);
+
         yield return new WaitForSeconds(hintTime2);
 
+        FindObjectOfType<DialogueManager>().StartDialogue(hint2);
+
         yield return new WaitForSeconds(hintTime3);
+
+        FindObjectOfType<DialogueManager>().StartDialogue(hint3);
     }
 
     private void FixedUpdate()
