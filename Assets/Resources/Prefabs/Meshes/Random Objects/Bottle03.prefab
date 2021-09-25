@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1325615055489704338}
   - component: {fileID: 1149824036954043709}
   - component: {fileID: 2503097661981834491}
+  - component: {fileID: 1116596512994520479}
   m_Layer: 6
   m_Name: Bottle03
   m_TagString: Untagged
@@ -333,3 +334,17 @@ MonoBehaviour:
   canEquip: 1
   interactableLayer: Interactable
   heldLayer: Held
+--- !u!114 &1116596512994520479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4195817530293769631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d91039081111444eb5817d27b1df0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewObject: {fileID: 7690234348942373251, guid: a326b83b18b13504cbbafdaffdd752d1, type: 3}
+  velocityThreshold: 2
