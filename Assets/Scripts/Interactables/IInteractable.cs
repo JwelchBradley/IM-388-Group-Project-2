@@ -22,7 +22,7 @@ public interface IInteractable
     /// <summary>
     /// Displays the name of this object.
     /// </summary>
-    public void DisplayObjectName();
+    public void DisplayObjectName(bool canHold, bool canEquipAction);
 
     /// <summary>
     /// Stops displaying the name of this object.

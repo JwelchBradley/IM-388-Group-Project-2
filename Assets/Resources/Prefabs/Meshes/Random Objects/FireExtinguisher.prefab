@@ -481,6 +481,7 @@ MonoBehaviour:
   objectMoveSpeed: 12
   equipOffset: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  equipActionName: shoot fire extinguisher
   unequipThrowForce: 800
   throwForce: 1200
   canEquip: 1

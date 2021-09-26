@@ -31,15 +31,44 @@ public class PlayerPickup : MonoBehaviour
     /// </summary>
     private IInteractable heldItem = null;
 
+    public IInteractable HeldItem
+    {
+        get { return heldItem; }
+        set
+        {
+            heldItem = value;
+        }
+    }
+
     /// <summary>
     /// The interactable script of a hovered item.
     /// </summary>
     private IInteractable hoveredItem = null;
 
+    public IInteractable HoverItem
+    {
+        get { return hoveredItem; }
+        set
+        {
+            hoveredItem = value;
+        }
+    }
+
     /// <summary>
     /// The interactalbe script of the equiped item.
     /// </summary>
     private IInteractable equipedItem = null;
+
+    public IInteractable EquipedItem
+    {
+        get { return equipedItem; }
+        set
+        {
+            equipedItem = value;
+        }
+    }
+
+    private bool canUnEquip = false;
     #endregion
 
     /// <summary>
@@ -75,10 +104,18 @@ public class PlayerPickup : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 equipedItem.EquipAction(ref equipedItem);
+                canUnEquip = false;
             }
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && canUnEquip)
             {
                 ResetEquippedItem();
+            }
+        }
+        else if(heldItem != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                EquipItem(heldItem);
             }
         }
     }
@@ -120,7 +157,12 @@ public class PlayerPickup : MonoBehaviour
 
         // Makes object the current Hover Object
         interactable.HighlightObject();
-        interactable.DisplayObjectName();
+
+        if(equipedItem == null)
+        {
+            interactable.DisplayObjectName(true, false);
+        }
+
         hoveredItem = interactable;
     }
 
@@ -131,7 +173,11 @@ public class PlayerPickup : MonoBehaviour
     {
         if(hoveredItem != null && heldItem == null)
         {
-            hoveredItem.RemoveObjectName();
+            if(equipedItem == null)
+            {
+                hoveredItem.RemoveObjectName();
+            }
+
             hoveredItem.UnHighlightObject();
             hoveredItem = null;
         }
@@ -173,12 +219,27 @@ public class PlayerPickup : MonoBehaviour
     /// <param name="interactable">The currently hovered interactable object.</param>
     private void EquipItem(IInteractable interactable)
     {
+        interactable.DisplayObjectName(false, true);
+
         if (equipedItem != interactable && interactable.CanEquip())
         {
+            if(heldItem != null)
+            {
+                heldItem.UnHighlightObject();
+                heldItem.Drop();
+                heldItem = null;
+            }
+
             ResetEquippedItem();
+            Invoke("AllowUnequip", 0.01f);
             interactable.Equip(equipLocation);
             equipedItem = interactable;
         }
+    }
+
+    private void AllowUnequip()
+    {
+        canUnEquip = true;
     }
 
     /// <summary>
@@ -188,6 +249,7 @@ public class PlayerPickup : MonoBehaviour
     {
         if(equipedItem != null)
         {
+            canUnEquip = false;
             equipedItem.UnEquip();
             equipedItem.UnEquipAction();
             equipedItem = null;

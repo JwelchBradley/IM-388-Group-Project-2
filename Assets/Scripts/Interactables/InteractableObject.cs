@@ -56,6 +56,18 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [Tooltip("The roation of the object when it is equiped")]
     private Vector3 equipRotation = Vector3.zero;
 
+    [SerializeField]
+    [Tooltip("The name of this objects hold action")]
+    private string holdString = "<sprite index=0> to hold";
+
+    [SerializeField]
+    [Tooltip("The name of this objects equip")]
+    private string equipString = "\n<sprite index=1> to equip";
+
+    [SerializeField]
+    [Tooltip("The name of this objects equip action")]
+    private string equipActionString = "<sprite index=0> to throw";
+
     [Space]
     [SerializeField]
     [Tooltip("The force applied to the object when it is unequiped")]
@@ -139,9 +151,19 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// <summary>
     /// Displays the objects name.
     /// </summary>
-    public void DisplayObjectName()
+    public void DisplayObjectName(bool canHold, bool canEquipAction)
     {
-        displayName.text = gameObject.name;
+        if (canHold)
+        {
+            displayName.text = holdString;
+            displayName.text += equipString;
+        }
+        else if (canEquipAction)
+        {
+            displayName.text = equipActionString;
+            displayName.text += "\n<sprite index=1> to unequip";
+        }
+
     }
 
     /// <summary>
@@ -293,6 +315,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
         UnEquip();
         Throw(throwForce);
         equipedItem = null;
+        RemoveObjectName();
     }
 
     /// <summary>
@@ -301,6 +324,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public void UnEquipAction()
     {
         Throw(unequipThrowForce);
+        RemoveObjectName();
     }
     #endregion
     #endregion

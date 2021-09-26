@@ -65,13 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The rate at which gravity scales")]
-    [Range(-20, 0)]
+    [Range(-50, 0)]
     private float gravity = -9.8f;
 
     [Space]
     [SerializeField]
     [Tooltip("How far away the player must be from the ground to be grounded")]
-    [Range(-30, -5)]
+    [Range(0, 2)]
     private float groundCheckDist = 0.5f;
 
     [SerializeField]
@@ -255,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void GravityCalculation()
     {
-        if (!controller.isGrounded)
+        if (!isGrounded)
         {
             velocity.y += gravity * Time.deltaTime;
 
@@ -263,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            velocity.y = 0;
+            controller.Move(velocity * Time.deltaTime);
         }
     }
     #endregion

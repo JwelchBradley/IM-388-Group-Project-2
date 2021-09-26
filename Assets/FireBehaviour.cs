@@ -5,8 +5,7 @@ public class FireBehaviour : MonoBehaviour
     ParticleSystem fire;
     ParticleSystem smoke;
 
-    [SerializeField]
-    PatientBehaviour patient;
+    public PatientBehaviour patient;
 
     bool hasBeenPutOut = false;
 
