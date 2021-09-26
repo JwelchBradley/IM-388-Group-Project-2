@@ -1176,6 +1176,10 @@ PrefabInstance:
       propertyPath: hint1.sentences.Array.data[1]
       value: I'm feeling a bit hot under the collar...
       objectReference: {fileID: 0}
+    - target: {fileID: 148817828, guid: 17ea54d28bb419c42952c7dae6d9796e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 57feb7fcfff08ba4e92fd5483ee15503, type: 3}
     - target: {fileID: 2833488629657273536, guid: 17ea54d28bb419c42952c7dae6d9796e, type: 3}
       propertyPath: m_Name
       value: Paitient Variant
