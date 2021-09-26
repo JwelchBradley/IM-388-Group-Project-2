@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8309202655775584577}
   - component: {fileID: 1422851064879835984}
   - component: {fileID: 3489844081706906502}
+  - component: {fileID: 4654179648053293607}
   m_Layer: 6
   m_Name: CoffeeMugBestDoctor
   m_TagString: Untagged
@@ -344,5 +345,27 @@ MonoBehaviour:
   objectMoveSpeed: 12
   equipOffset: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  holdString: <sprite index=0> to hold
+  equipString: '
+
+    <sprite index=1> to equip'
+  equipActionString: <sprite index=0> to throw
   unequipThrowForce: 800
   throwForce: 1200
+  canEquip: 1
+  interactableLayer: Interactable
+  heldLayer: Held
+--- !u!114 &4654179648053293607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195742631586428362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d91039081111444eb5817d27b1df0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewObject: {fileID: 2007230467583551893, guid: 01da28cbdf70f6440835de33eabb349a, type: 3}
+  velocityThreshold: 2
