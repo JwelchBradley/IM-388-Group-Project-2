@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 351732885578853714}
   - component: {fileID: 5203839088582635641}
   - component: {fileID: 9183558344382453161}
+  - component: {fileID: 1918488797009474340}
   m_Layer: 6
   m_Name: GasCan
   m_TagString: Untagged
@@ -684,5 +685,26 @@ MonoBehaviour:
   objectMoveSpeed: 12
   equipOffset: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  holdString: <sprite index=0> to hold
+  equipString: '
+
+    <sprite index=1> to equip'
+  equipActionString: <sprite index=0> to throw
   unequipThrowForce: 800
   throwForce: 1200
+  canEquip: 1
+  interactableLayer: Interactable
+  heldLayer: Held
+--- !u!114 &1918488797009474340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260093582073892484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7984c1698bb1f1744afffb324fb68a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1416509908853102795, guid: 41b25ed6e111b9348bc83c2c59538be2, type: 3}

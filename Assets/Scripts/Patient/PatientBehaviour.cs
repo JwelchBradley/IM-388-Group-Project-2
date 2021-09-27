@@ -13,7 +13,8 @@ public class PatientBehaviour : MonoBehaviour
     /// <summary>
     /// The amount of time currently left before the patient dies.
     /// </summary>
-    private float timeLeft = 0;
+    [HideInInspector]
+    public float timeLeft = 0;
 
     [SerializeField]
     [Tooltip("How long before the first hint is given")]
