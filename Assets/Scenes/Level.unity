@@ -8295,6 +8295,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6938364826914072421, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364826914072421, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364827315682112, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3631
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364827315682112, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.42
+      objectReference: {fileID: 0}
     - target: {fileID: 6938364827327466177, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8342,6 +8358,22 @@ PrefabInstance:
     - target: {fileID: 6938364827327466178, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
       propertyPath: m_Name
       value: Room (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364827590468282, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8617
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364827590468282, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364828384199937, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.876041
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938364828384199937, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -38.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669b86e440b47aa4e84033a442555e76, type: 3}
@@ -12973,6 +13005,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370915504}
     m_Modifications:
+    - target: {fileID: 5557274337889624566, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1152700067}
+    - target: {fileID: 5557274337889624566, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1152700067}
+    - target: {fileID: 5557274337889624566, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557274337889624566, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557274337889624566, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 931040818}
+    - target: {fileID: 5557274337889624566, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1624927619}
+    - target: {fileID: 5557274337889624567, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1152700067}
+    - target: {fileID: 5557274337889624567, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisablePanel
+      objectReference: {fileID: 0}
     - target: {fileID: 5557274338727273488, guid: 3e0e673ca0f0d504a8ff494d8712dc74, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

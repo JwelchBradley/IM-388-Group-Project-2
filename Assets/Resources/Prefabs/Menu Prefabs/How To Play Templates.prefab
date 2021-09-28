@@ -355,46 +355,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<U>Designers</U>
-
-    Jacob Welch
-
-
-    <u>Assets Used</u>
-
-    KennyS
-
-
-    other
-    stuff
-
-    other stuff
-
-    other stuff
-
-    other stuff
-
-    other stuff
-
-    other
-    stuff
-
-    other stuff
-
-    other stuff
-
-    other stuff
-
-    other stuff
-
-    other
-    stuff
-
-    other stuff
-
-    other stuff
-
-    other stuff'
+  m_text: "You are the doctor and you are in. Patients will enter your office with
+    wacky diseases and it's your job to help cure them. Your office is a mess though
+    and you must search for a solution before they die. \n\n<u>Controls</u>\nLeft
+    Mouse - pickup/equipped action\nRight Mouse - equip/unequip\nMovement - WASD\nJump
+    - Space\nCrouch - shift\nEscape - pause game"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -631,8 +596,8 @@ RectTransform:
   m_Father: {fileID: 5557274339437532194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.62011}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -692,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5557274338984801594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -925,10 +890,10 @@ RectTransform:
   m_Father: {fileID: 5557274338428136134}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -490.11005}
-  m_SizeDelta: {x: 820, y: 759.78}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5557274339256387226
 CanvasRenderer:
@@ -975,7 +940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5557274339256387230}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
@@ -1143,10 +1108,10 @@ RectTransform:
   m_Father: {fileID: 5557274338428136134}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -435.11002}
-  m_SizeDelta: {x: 820, y: 830.22003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5557274339628772158
 CanvasRenderer:
