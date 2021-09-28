@@ -46,6 +46,8 @@ public class PatientBehaviour : MonoBehaviour
     [SerializeField]
     [Tooltip("An array of the third hints this patient might give")]
     private Dialogue[] hint3;
+
+    DialogueManager dm;
     #endregion
 
     #region Solution
@@ -66,6 +68,9 @@ public class PatientBehaviour : MonoBehaviour
     {
         timeLeft = survivalTime;
         GetComponentInChildren<MenuBehavior>().crossfadeAnim = GameObject.Find("Pause Menu Templates Canvas").GetComponent<PauseMenuBehavior>().crossfadeAnim;
+
+        dm = FindObjectOfType<DialogueManager>();
+
         StartCoroutine(DisplayHints());
     }
 
@@ -75,7 +80,7 @@ public class PatientBehaviour : MonoBehaviour
         {
             if(timeLeft < survivalTime - hintTime1)
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(hint1[Random.Range(0, hint1.Length)]);
+                dm.StartDialogue(hint1[Random.Range(0, hint1.Length)]);
                 break;
             }
             
@@ -86,7 +91,7 @@ public class PatientBehaviour : MonoBehaviour
         {
             if (timeLeft < survivalTime - (hintTime1 + hintTime2))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(hint2[Random.Range(0, hint2.Length)]);
+                dm.StartDialogue(hint2[Random.Range(0, hint2.Length)]);
                 break;
             }
 
@@ -97,7 +102,7 @@ public class PatientBehaviour : MonoBehaviour
         {
             if (timeLeft < survivalTime - (hintTime1 + hintTime2 + hintTime3))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(hint3[Random.Range(0, hint3.Length)]);
+                dm.StartDialogue(hint3[Random.Range(0, hint3.Length)]);
                 break;
             }
 
