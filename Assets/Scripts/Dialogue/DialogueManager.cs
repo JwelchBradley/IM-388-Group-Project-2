@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject dialoguePanel; 
 
-    Vector3 camPos;
+    Camera camPos;
 
     public DialogueSounds DialogueSnds;
 
@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
 
-        camPos = Camera.main.transform.position;
+        camPos = Camera.main;
     }
 
     private void Update()
@@ -72,14 +72,14 @@ public class DialogueManager : MonoBehaviour
             //LetterSoundSelection(letter);
 
             dialogueText.text += letter;
-            AudioSource.PlayClipAtPoint(LetterSoundSelection(letter), camPos);
+            AudioSource.PlayClipAtPoint(LetterSoundSelection(letter), camPos.transform.position);
             yield return new WaitForFixedUpdate();
         }
     }
 
     public AudioClip LetterSoundSelection(char test)
     {
-        if (test != '.' && test != ' ' && test != '?' && test != ',' && test != '\'')
+        if (test != '.' && test != ' ' && test != '?' && test != ',' && test != '\'' && test != '!' && test != '\'')
         {
             char name = test;
             //char c = 'b'; you may use lower case character.

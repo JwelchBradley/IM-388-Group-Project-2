@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InteractableDrawer : MonoBehaviour
@@ -19,6 +20,12 @@ public class InteractableDrawer : MonoBehaviour
 
     private Coroutine currentMove;
 
+    private TextMeshProUGUI text;
+
+    private PlayerPickup pp;
+
+    private string action = "open";
+
     private float time = 0;
 
     private void Awake()
@@ -27,6 +34,8 @@ public class InteractableDrawer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         startPos = rb.position;
         outline = GetComponent<Outline>();
+        pp = GameObject.Find("Player").GetComponent<PlayerPickup>();
+        text = GameObject.Find("Display Name").GetComponent<TextMeshProUGUI>();
         outline.enabled = false;
         openPos = startPos + transform.up * amountForward;
     }
@@ -40,12 +49,22 @@ public class InteractableDrawer : MonoBehaviour
     {
         bool closeness = PlayerCloseEnough();
 
+        bool playerNotHolding = pp.HeldItem == null && pp.EquipedItem == null;
+
+        if (closeness && playerNotHolding)
+        {
+            text.text = "<sprite index=0> to " + action;
+        }
+
         if (closeness && !outline.isActiveAndEnabled)
         {
             outline.enabled = true;
         }
         else if(!closeness)
         {
+            if(playerNotHolding)
+            text.text = "";
+
             outline.enabled = false;
         }
     }
@@ -56,11 +75,13 @@ public class InteractableDrawer : MonoBehaviour
         {
             if (transform.position != startPos)
             {
+                action = "open";
                 StopAllCoroutines();
                 StartCoroutine(MoveDrawerIn());
             }
             else
             {
+                action = "close";
                 StopAllCoroutines();
                 StartCoroutine(MoveDrawerOut());
             }
@@ -101,6 +122,11 @@ public class InteractableDrawer : MonoBehaviour
 
     private void OnMouseExit()
     {
+        bool playerNotHolding = pp.HeldItem == null && pp.EquipedItem == null;
+
+        if(playerNotHolding)
+        text.text = "";
+
         outline.enabled = false;
     }
 }

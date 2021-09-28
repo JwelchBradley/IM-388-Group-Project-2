@@ -275,7 +275,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
         // Sets the objects position and rotation
         //transform.rotation = equipLocation.transform.rotation * Quaternion.Euler(equipRotation);
         transform.forward = mainCamera.transform.forward;
-        transform.position = equipLocation.transform.position + equipOffset;
+        transform.position = equipLocation.transform.position + equipOffset.x * transform.forward;
         transform.parent = equipLocation.transform;
     }
 

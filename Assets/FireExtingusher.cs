@@ -15,6 +15,7 @@ public class FireExtingusher : InteractableObject
     {
         if(Time.timeScale != 0)
         {
+            steam.enableEmission = true;
             steam.Play();
         }
     }
@@ -23,7 +24,8 @@ public class FireExtingusher : InteractableObject
     {
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            steam.Stop();
+            steam.enableEmission = false;
+            //steam.Stop();
         }
     }
 }

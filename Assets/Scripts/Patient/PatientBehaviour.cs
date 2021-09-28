@@ -37,15 +37,15 @@ public class PatientBehaviour : MonoBehaviour
     [Header("Hints")]
     [SerializeField]
     [Tooltip("An array of the first hints this patient might give")]
-    private Dialogue hint1;
+    private Dialogue[] hint1;
 
     [SerializeField]
     [Tooltip("An array of the second hints this patient might give")]
-    private Dialogue hint2;
+    private Dialogue[] hint2;
 
     [SerializeField]
     [Tooltip("An array of the third hints this patient might give")]
-    private Dialogue hint3;
+    private Dialogue[] hint3;
     #endregion
 
     #region Solution
@@ -71,17 +71,38 @@ public class PatientBehaviour : MonoBehaviour
 
     private IEnumerator DisplayHints()
     {
-        yield return new WaitForSeconds(hintTime1);
+        while (true)
+        {
+            if(timeLeft < survivalTime - hintTime1)
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(hint1[Random.Range(0, hint1.Length)]);
+                break;
+            }
+            
+            yield return new WaitForFixedUpdate();
+        }
 
-        FindObjectOfType<DialogueManager>().StartDialogue(hint1);
+        while (true)
+        {
+            if (timeLeft < survivalTime - (hintTime1 + hintTime2))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(hint2[Random.Range(0, hint2.Length)]);
+                break;
+            }
 
-        yield return new WaitForSeconds(hintTime2);
+            yield return new WaitForFixedUpdate();
+        }
 
-        FindObjectOfType<DialogueManager>().StartDialogue(hint2);
+        while (true)
+        {
+            if (timeLeft < survivalTime - (hintTime1 + hintTime2 + hintTime3))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(hint3[Random.Range(0, hint3.Length)]);
+                break;
+            }
 
-        yield return new WaitForSeconds(hintTime3);
-
-        FindObjectOfType<DialogueManager>().StartDialogue(hint3);
+            yield return new WaitForFixedUpdate();
+        }        
     }
 
     private void FixedUpdate()
