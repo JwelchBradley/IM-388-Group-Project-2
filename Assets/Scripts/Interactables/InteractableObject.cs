@@ -312,6 +312,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     /// </summary>
     public virtual void EquipAction(ref IInteractable equipedItem)
     {
+        GameObject.Find("Player").GetComponent<PlayerPickup>().CanUnEquip = false;
         UnEquip();
         Throw(throwForce);
         equipedItem = null;

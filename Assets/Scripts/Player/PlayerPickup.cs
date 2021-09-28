@@ -69,6 +69,14 @@ public class PlayerPickup : MonoBehaviour
     }
 
     private bool canUnEquip = false;
+
+    public bool CanUnEquip
+    {
+        set
+        {
+            canUnEquip = value;
+        }
+    }
     #endregion
 
     /// <summary>
@@ -104,7 +112,7 @@ public class PlayerPickup : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 equipedItem.EquipAction(ref equipedItem);
-                canUnEquip = false;
+                //canUnEquip = false;
             }
             if (Input.GetKeyDown(KeyCode.Mouse1) && canUnEquip)
             {
@@ -139,6 +147,10 @@ public class PlayerPickup : MonoBehaviour
 
                 if(interactable != null)
                 HandleInteractableHover(interactable);
+                else
+                {
+                    ResetHoverItem();
+                }
             }
             else
             {

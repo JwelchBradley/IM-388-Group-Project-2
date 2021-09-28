@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f52fa0c04a2194eb889e22cbd9f70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountForward: 1.5
+  amountForward: 1.3
 --- !u!114 &9193444745062914204
 MonoBehaviour:
   m_ObjectHideFlags: 0

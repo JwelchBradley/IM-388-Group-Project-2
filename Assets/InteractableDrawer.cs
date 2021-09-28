@@ -24,8 +24,8 @@ public class InteractableDrawer : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player");
-        startPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        startPos = rb.position;
         outline = GetComponent<Outline>();
         outline.enabled = false;
         openPos = startPos + transform.up * amountForward;
@@ -69,7 +69,7 @@ public class InteractableDrawer : MonoBehaviour
 
     private IEnumerator MoveDrawerOut()
     {
-        Vector3 drawerPos = transform.position;
+        Vector3 drawerPos = rb.position;
 
         while (transform.position != openPos)
         {
@@ -85,7 +85,7 @@ public class InteractableDrawer : MonoBehaviour
 
     private IEnumerator MoveDrawerIn()
     {
-        Vector3 drawerPos = transform.position;
+        Vector3 drawerPos = rb.position;
 
         while (transform.position != startPos)
         {
