@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929240526260752887}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.787893, y: 11.796285, z: 11.796285}
   m_Children: []
@@ -661,8 +661,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectMoveSpeed: 12
-  equipOffset: {x: 0, y: 0, z: 0}
+  equipOffset: {x: 2, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  holdString: <sprite index=0> to hold
+  equipString: '
+
+    <sprite index=1> to equip'
+  equipActionString: <sprite index=0> to throw
   unequipThrowForce: 800
   throwForce: 1200
   canEquip: 1
