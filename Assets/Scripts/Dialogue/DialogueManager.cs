@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
 
     public AudioClip LetterSoundSelection(char test)
     {
-        if (test != '.' && test != ' ' && test != '?' && test != ',' && test != '\'')
+        if (test != '.' && test != ' ' && test != '?' && test != ',' && test != '\'' && test != '!')
         {
             char name = test;
             //char c = 'b'; you may use lower case character.
