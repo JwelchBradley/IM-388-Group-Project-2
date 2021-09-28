@@ -51,7 +51,9 @@ public class CollisionSound : MonoBehaviour
     {
         if(collision.relativeVelocity.magnitude > requiredHitVelocity)
         {
-            aud.Play();
+            float soundVol = 0.075f * collision.relativeVelocity.magnitude;
+            soundVol = Mathf.Clamp(soundVol, 0, 1);
+            aud.PlayOneShot(aud.clip, soundVol);
         }
     }
 }

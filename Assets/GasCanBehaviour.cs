@@ -10,6 +10,9 @@ public class GasCanBehaviour : MonoBehaviour
 
     private PlayerPickup player;
 
+    [SerializeField]
+    private AudioClip explosionSound;
+
     private IInteractable interactable;
 
     private void Awake()

@@ -94,6 +94,7 @@ public class MenuBehavior : MonoBehaviour
         yield return new WaitForSecondsRealtime(crossfadeAnim.GetCurrentAnimatorStateInfo(0).length);
 
         Time.timeScale = 1;
+        AudioListener.pause = false;
 
         loadOp.allowSceneActivation = true;
     }
